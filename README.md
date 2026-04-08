@@ -4,6 +4,17 @@ An end-to-end deep learning and computer vision pipeline that classifies 15 type
 
 This project leverages an optimized Transfer Learning architecture to achieve **99.97% test accuracy**, deployed via a custom OpenCV interface with temporal smoothing for highly stable live-webcam inference.
 
+## Project Structure
+transfer-learning-model/
+│
+├── models/
+│   └── efficientnet_vegetables_best.keras   # EfficientNetV2 model
+│
+├── notebooks/
+│   └── transfer_learning_pipeline.ipynb     # Jupyter notebook
+│
+├── requirements.txt                         # Used libraries
+
 ## Key Features
 * **High-Accuracy Transfer Learning:** Powered by a fine-tuned `EfficientNetV2B0` architecture, utilizing pre-trained ImageNet weights for highly efficient feature extraction.
 * **Smart UI & Temporal Smoothing:** The OpenCV interface uses a 45-frame memory buffer (`collections.deque`) to "vote" on predictions, completely eliminating UI flickering caused by shadows or poor lighting.
