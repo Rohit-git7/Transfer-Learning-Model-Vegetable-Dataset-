@@ -45,4 +45,16 @@ Training a transfer learning model on 21,000 images required strict data managem
 * **The "Sim-to-Real" Gap:** Realized that high dataset accuracy doesn't translate perfectly to webcams due to background noise and harsh lighting. Solved by implementing strict confidence thresholds (>85%) and a dynamic temporal voting system.
 * **Dataset Bias:** Identified regional variance issues (e.g., Indian cucumbers vs. Western cucumbers) causing misclassifications with bottle gourds, requiring careful environmental testing & proper lighting conditions to detect it correctly
 
+## Results & Evaluation
+* **Model Performance:** The EfficientNetV2B0 architecture achieved near-perfect classification metrics on the isolated test set of 3,000 images (representing 15% of the total dataset). The high test accuracy confirms that the heavy regularization strategy (Global Average Pooling + 40% Dropout) successfully prevented the model from overfitting to the training distribution.
+* **Final Test Accuracy:** 99.90%
+* **Validation Loss:** Stabilized near 0.01 after Phase 2 micro-fine-tuning.
+
+* **Real-Time Model's Performance:** The true test of the model was its deployment to a live webcam feed running on my Apple Silicon (M2 Pro) environment. By converting batch-dependent model.predict() calls into direct tensor execution, the pipeline achieved a rock-solid, crash-free 30+ Frames Per Second (FPS). Also, the system ran continuously without triggering the memory leak issues common to TensorFlow's Metal backend during continuous video loops.
+
+* **The "Simulation to Real" Gap:** During live testing, the model was subjected to challenging real-world environmental factors not present in the clean training dataset. Deep shadows initially caused false positives (e.g., classifying a shadowed tomato as a capsicum). So, to fix these issued I've implemented a 45-frame Temporal Smoothing Voting System, which required an 80% supermajority over 1.5 seconds to confirm a target, ignoring split-second lighting anomalies. By implementing a strict >85% confidence threshold, the model successfully ignored complex backgrounds (living rooms, human faces, blank walls) without "hallucinating" false vegetable classifications.
+
+* **Regional Dataset Bias:** Live testing identified a domain shift regarding physical vegetable variations (e.g., smooth Indian Kheera cucumbers vs. bumpy Western cucumbers). The temporal UI successfully stabilized predictions, but it highlighted an area for future dataset augmentation.
+
+
 
