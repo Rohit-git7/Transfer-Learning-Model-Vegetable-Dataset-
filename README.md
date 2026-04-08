@@ -14,6 +14,8 @@ This project leverages an optimized Transfer Learning architecture to achieve **
 2. **Phase 1 (Feature Extraction):** Attached a custom Global Average Pooling head and trained on frozen EfficientNetV2 base weights.
 3. **Phase 2 (Fine-Tuning):** Unfroze the top 30 layers of the base model and applied a microscopic learning rate (`1e-5`) to specialize the core feature extractors for agricultural textures, pushing final test accuracy to **99.97%**.
 
+## Supported Classes
+* **Classes:** Bean, Bitter Gourd, Bottle Gourd, Brinjal, Broccoli, Cabbage, Capsicum, Carrot, Cauliflower, Cucumber, Papaya, Potato, Pumpkin, Radish, Tomato.
 ## Engineering Challenges Overcome
 * **The "Sim-to-Real" Gap:** Realized that high dataset accuracy doesn't translate perfectly to webcams due to background noise and harsh lighting. Solved by implementing strict confidence thresholds (>85%) and a dynamic temporal voting system.
 * **Dataset Bias:** Identified regional variance issues (e.g., Indian cucumbers vs. Western cucumbers) causing misclassifications with bottle gourds, requiring careful environmental testing & proper lighting conditions to detect it correctly
