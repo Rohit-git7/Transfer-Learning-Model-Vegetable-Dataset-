@@ -1,4 +1,3 @@
-# Transfer-Learning-Model-Vegetable-Dataset-
 # Vegetable Detector: Real-Time Transfer Learning Detector
 
 An end-to-end deep learning and computer vision pipeline that classifies 15 types of vegetables in real-time. 
