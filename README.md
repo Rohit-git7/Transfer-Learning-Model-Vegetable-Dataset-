@@ -4,6 +4,8 @@ An end-to-end deep learning and computer vision pipeline that classifies 15 type
 
 This project leverages an optimized Transfer Learning architecture to achieve **99.90% test accuracy**, deployed via a custom OpenCV interface with temporal smoothing for highly stable live-webcam inference.
 
+**Dataset :** https://www.kaggle.com/datasets/misrakahmed/vegetable-image-dataset
+
 ## Model Architecture
 The core of the classifier is a highly optimized Transfer Learning architecture. Rather than training from scratch, this pipeline leverages EfficientNetV2B0 as an advanced feature extractor and capped with a heavily regularized, custom-built classification head.
 
